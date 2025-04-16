@@ -1,4 +1,4 @@
-# SauceDemo Automated Testing Project
+# Automated Testing Project
 
 ## Overview
 This Java-based automated testing project is structured using the **Page Object Model (POM)** and enhanced with various design patterns to ensure modularity, maintainability, and scalability. It automates login test cases for [SauceDemo](https://www.saucedemo.com/) using Selenium WebDriver.
@@ -7,44 +7,34 @@ This Java-based automated testing project is structured using the **Page Object 
 
 ## Project Structure
 ```
-src/test/java/
-├── business/               # Core logic layer
-│   └── models/             # Page Object classes
-│       └── LoginPage.java
-│       └── DashboardPage.java
-│   └── facades/            # Facade pattern to abstract workflows
-│       └── LoginFacade.java
-│
-├── test/                   # Test layer (JUnit test cases)
-│   └── LoginTests.java
-│
-├── utils/                  # Utility layer
-│   └── DriverManager.java  # Singleton WebDriver
-│   └── LogUtils.java       # Log4j logger setup
-│   └── DataProviderUtils.java
+src/main/java/com/epam/automation/
+├── models/               # Page Object classes (LoginPage)
+├── utils/                # Utilities (DriverManager, LogUtils, DataProviderUtils)
 
-resources/
-└── log4j.properties
+src/test/java/
+├── LoginTests.java       # Test logic
+
+src/test/resources/
+├── log4j2.properties     # Logger configuration
 ```
 
 ---
 
 ## Technologies Used
-- **Language:** Java
-- **Automation Tool:** Selenium WebDriver
+- **Language:** Java 24
+- **Automation Tool:** Selenium WebDriver (v4.31.0)
 - **Project Management:** Maven
-- **Test Runner:** JUnit
-- **Browsers:** Chrome, Edge
+- **Test Runner:** JUnit 5.13.0-M2
+- **Assertions:** Hamcrest 3.0
+- **Browsers:** Chrome, Edge (via WebDriverManager 6.0.1)
 - **Design Patterns:**
-    - Page Object Model
-    - Abstract Factory
-    - Adapter
-    - Decorator
-    - Facade
-    - Singleton
-- **Logging:** Log4j
-- **Assertions:** Hamcrest
-- **Automation Approach:** BDD (behavioral test descriptions)
+  - Page Object Model
+  - Singleton (DriverManager)
+  - Facade (applied inside Page Object methods)
+  - Abstract Factory + Adapter (for browser setup)
+  - Decorator (available for extensions)
+- **Logging:** Log4j 3.0.0-beta3
+- **Automation Approach:** BDD-style naming
 - **Locators:** XPath
 
 ---
@@ -64,34 +54,50 @@ resources/
 - Assert: `"Password is required"` message appears.
 
 ### UC-3: Successful Login
-- Enter valid username from "Accepted usernames".
+- Enter valid username from "Accepted usernames":
+  - `standard_user`
+  - `problem_user`
+  - `performance_glitch_user`
 - Password: `secret_sauce`
 - Click Login.
 - Assert: Title is `"Swag Labs"`.
 
 ---
 
-## Advanced Features
-- **Page Factory** for object initialization
-- **DataProvider** for test parameterization
-- **Parallel Execution** with Maven Surefire plugin
-- **Log4j Logging** in all layers
-
----
-
 ## How to Run
 ```bash
-# Run tests via Maven
+# Run tests with Maven
 mvn clean test
+```
 
-# Generate reports or logs if applicable
+Tests will execute in Chrome by default. To run with Edge, change the browser in:
+```java
+DriverManager.getDriver(BrowserType.EDGE);
 ```
 
 ---
 
-## Notes
-- Ensure browser drivers for **Chrome** and **Edge** are installed or managed via WebDriverManager.
-- Tests are compatible with **JUnit** runners and written using **BDD-style assertions**.
+## Classes
+### `DriverManager.java`
+Handles WebDriver instantiation using Singleton + Abstract Factory for browser selection.
+
+### `LoginPage.java`
+Implements the Page Object Model. Uses PageFactory and encapsulates workflows like login actions.
+
+### `LoginTests.java`
+JUnit 5 tests (UC-1 to UC-3), assertions with Hamcrest, logs with Log4j.
+
+### `DataProviderUtils.java`
+Provides lists of credentials for manual test iteration. Easily integrable with loops or DynamicTest.
+
+---
+
+## Logging
+Logging is enabled via Log4j 3. Example:
+```java
+private static final Logger logger = LogUtils.getLogger(LoginTests.class);
+logger.info("Test started");
+```
 
 ---
 

@@ -39,25 +39,25 @@ public class LoginTests {
     @Test
     @Order(1)
     public void testLoginWithEmptyCredentials() {
-        loginPage.loginWithEmptyCredentials();
+        loginPage.login("", "");
         String errorMessage = loginPage.getErrorMessage();
-        MatcherAssert.assertThat(errorMessage, Matchers.containsString("Epic sadface: Username and password do not match any user in this service"));
+        MatcherAssert.assertThat(errorMessage, Matchers.containsString("Username is required"));
         logger.info("UC-1 passed");
     }
 
     @Test
     @Order(2)
     public void testLoginWithUsernameOnly() {
-        loginPage.loginWithUsernameOnly("standard_user");
+        loginPage.login("standard_user","");
         String errorMessage = loginPage.getErrorMessage();
-        MatcherAssert.assertThat(errorMessage, Matchers.containsString("Epic sadface: Username and password do not match any user in this service"));
+        MatcherAssert.assertThat(errorMessage, Matchers.containsString("Password is required"));
         logger.info("UC-2 passed");
     }
 
     @Test
     @Order(3)
     public void testSuccessfulLogin() {
-        loginPage.loginWithCredentials("standard_user", "secret_sauce");
+        loginPage.login("standard_user", "secret_sauce");
         String title = loginPage.getPageTitle();
         MatcherAssert.assertThat(title, Matchers.equalTo("Swag Labs"));
         logger.info("UC-3 passed");

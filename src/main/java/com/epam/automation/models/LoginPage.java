@@ -23,12 +23,14 @@ public class LoginPage {
     @CacheLookup
     private WebElement loginButton;
 
+    @FindBy(xpath = "//*[@id=\"login_button_container\"]/div/form/div[3]/h3")
+    @CacheLookup
+    private WebElement errorMessage;
+
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this); // POM + Factory
     }
-
-    // Basic Actions
 
     public void enterUsername(String username) {
         usernameInput.clear();
@@ -45,37 +47,17 @@ public class LoginPage {
     }
 
     public String getErrorMessage() {
-        return driver.findElement(By.xpath("//h3[@data-test='error']")).getText();
+        return errorMessage.getText();
     }
 
     public String getPageTitle() {
         return driver.getTitle();
     }
 
-    // Facade-style Methods
-
-    public void loginWithCredentials(String username, String password) {
+    // Facade-style Method
+    public void login(String username, String password) {
         enterUsername(username);
         enterPassword(password);
-        clickLoginButton();
-    }
-
-    public void clearFields() {
-        usernameInput.clear();
-        passwordInput.clear();
-    }
-
-    public void loginWithEmptyCredentials() {
-        enterUsername("placeholder");
-        enterPassword("placeholder");
-        clearFields();
-        clickLoginButton();
-    }
-
-    public void loginWithUsernameOnly(String username) {
-        enterUsername(username);
-        enterPassword("placeholder");
-        passwordInput.clear();
         clickLoginButton();
     }
 }
