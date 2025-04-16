@@ -97,5 +97,5 @@ mvn clean test
 
 ## Author
 Federico Villagra  
-QA Automation Engineer
+QA Automation Engineer Student
 
