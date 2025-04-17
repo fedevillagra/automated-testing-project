@@ -20,7 +20,7 @@ public abstract class BaseTests {
 
     @BeforeEach
     public void setUp(TestInfo testInfo) {
-        logger.info("Running: " + testInfo.getDisplayName());
+        logger.info("Running: {}", testInfo.getDisplayName());
         driver = DriverManager.getDriver(BrowserType.CHROME);
         driver.get("https://www.saucedemo.com/");
     }
@@ -40,7 +40,7 @@ public abstract class BaseTests {
             File screenshot = camera.getScreenshotAs(OutputType.FILE);
             File destination = new File("src/test/resources/screenshots/" + testName + ".png");
             Files.move(screenshot.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            logger.error("Captura de pantalla guardada en: " + destination.getAbsolutePath());
+            logger.error("Captura de pantalla guardada en: {}", destination.getAbsolutePath());
         } catch (IOException | WebDriverException e) {
             logger.error("No se pudo guardar la captura de pantalla", e);
         }

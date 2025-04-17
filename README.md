@@ -13,7 +13,6 @@ src/
 │       ├── models/
 │       │   └── LoginPage.java              # Page Object for login
 │       └── utils/
-│           ├── DataProviderUtils.java      # Provides test data (optional)
 │           ├── DriverManager.java          # Singleton WebDriver factory
 │           └── LogUtils.java               # Logger setup (Log4j2)
 │
@@ -59,7 +58,7 @@ Test results and screenshots (if failures occur) will be saved in:
 - `src/test/resources/screenshots/`
 
 Tests will execute in Chrome by default. To run with Edge, change the browser in:
-```java
+```
 DriverManager.getDriver(BrowserType.EDGE);
 ```
 
