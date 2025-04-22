@@ -9,9 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
     private final WebDriver driver;
 
-    // Locators (using XPath as required)
     @FindBy(xpath = "//*[@id=\"user-name\"]")
-    @CacheLookup // -> improve performance
+    @CacheLookup
     private WebElement usernameInput;
 
     @FindBy(xpath = "//*[@id=\"password\"]")
@@ -28,7 +27,7 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this); // POM + Factory
+        PageFactory.initElements(driver, this);
     }
 
     public void enterUsername(String username) {

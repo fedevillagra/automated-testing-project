@@ -1,6 +1,0 @@
-13:58:44 [main] INFO  base.BaseTests - Running: testLoginWithUsernameOnly()
-13:58:46 [main] INFO  base.BaseTests - UC-2 passed
-13:58:47 [main] INFO  base.BaseTests - Running: testSuccessfulLogin()
-13:58:48 [main] INFO  base.BaseTests - UC-3 passed
-13:58:48 [main] INFO  base.BaseTests - Running: testLoginWithEmptyCredentials()
-13:58:50 [main] INFO  base.BaseTests - UC-1 passed
