@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class LoginSteps {
-
+    private final static BrowserType browser = BrowserType.CHROME;
     private static WebDriver driver;
     private LoginPage loginPage;
     private String currentUser;
@@ -17,7 +17,7 @@ public class LoginSteps {
 
     @Given("the user is on the home screen of saucedemo.com")
     public void navigateToSauceDemo() {
-        driver = DriverManager.getDriver(BrowserType.CHROME);
+        driver = DriverManager.getDriver(browser);
         driver.get("https://www.saucedemo.com/");
         loginPage = new LoginPage(driver);
     }
