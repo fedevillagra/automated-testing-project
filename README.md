@@ -89,7 +89,7 @@ src/test/resources/test.properties
 
 Run only scenarios tagged with `@LoginTests`, for example:
 
-```java
+```
 @IncludeTags("LoginTests")
 ```
 

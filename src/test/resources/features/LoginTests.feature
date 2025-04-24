@@ -20,7 +20,7 @@ Feature: Login functionality
     Given the Home Page is displayed
     When I enter the username "<user>" and password "<pass>"
     And I click the login button
-    Then the page has the title "Swag Labs boque"
+    Then the page has the title "Swag Labs"
 
     Examples:
       | user           | pass         |

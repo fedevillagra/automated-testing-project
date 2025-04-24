@@ -39,3 +39,6 @@ build/
 
 ### Logs ###
 logs/test-log.log
+
+### Screenshots ###
+src/test/resources/screenshots/.
