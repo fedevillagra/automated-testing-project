@@ -41,4 +41,4 @@ build/
 logs/test-log.log
 
 ### Screenshots ###
-src/test/resources/screenshots/.
+src/test/resources/screenshots/*
