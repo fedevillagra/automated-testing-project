@@ -25,15 +25,17 @@ public class Hooks {
     @Before
     public void beforeScenario(Scenario scenario) {
         logger.info("Iniciando escenario: {}", scenario.getName());
+
+        // Inicializa el driver una vez por escenario
+        DriverManager.BrowserType browserType = DriverManager.BrowserType.valueOf(
+                ConfigReader.get("browser").toUpperCase()
+        );
+        DriverManager.getDriver(browserType);
     }
 
     @After
     public void takeScreenshotOnFailure(Scenario scenario) {
-        DriverManager.BrowserType browserType = DriverManager.BrowserType.valueOf(
-                ConfigReader.get("browser").toUpperCase()
-        );
-
-        WebDriver driver = DriverManager.getDriver(browserType);
+        WebDriver driver = DriverManager.getDriver(null);
 
         if (scenario.isFailed() && driver != null) {
             logger.error("El escenario ha fallado: {}", scenario.getName());

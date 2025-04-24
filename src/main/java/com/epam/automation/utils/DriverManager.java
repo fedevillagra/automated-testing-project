@@ -10,7 +10,7 @@ public class DriverManager {
         private static WebDriver driver;
 
         public static WebDriver getDriver(BrowserType browser) {
-            if (driver == null) {
+            if (driver == null && browser != null) {
                 driver = DriverFactory.createDriver(browser); // nuevo constructor externo (SRP)
                 driver.manage().window().maximize();
             }

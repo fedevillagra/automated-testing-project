@@ -2,7 +2,6 @@ package com.epam.automation.steps;
 
 import com.epam.automation.models.LoginPage;
 import com.epam.automation.utils.DriverManager;
-import com.epam.automation.utils.NavigationUtils;
 import io.cucumber.java.en.*;
 import org.apache.commons.text.RandomStringGenerator;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +15,8 @@ public class LoginSteps {
 
     @Given("the Home Page is displayed")
     public void navigateToSauceDemo() {
-        WebDriver driver = NavigationUtils.goToSauceDemo();
+        WebDriver driver = DriverManager.getDriver(null);
+        driver.get("https://www.saucedemo.com/");
         loginPage = new LoginPage(driver);
     }
 
