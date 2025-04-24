@@ -83,6 +83,12 @@
             <version>1.13.0-M2</version>
             <scope>test</scope>
         </dependency>
+        <!-- Random generator -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.13.0</version>
+        </dependency>
     </dependencies>
 
 </project>

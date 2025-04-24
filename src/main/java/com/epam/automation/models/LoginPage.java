@@ -51,11 +51,4 @@ public class LoginPage {
     public String getPageTitle() {
         return driver.getTitle();
     }
-
-    // Facade-style Method
-    public void login(String username, String password) {
-        enterUsername(username);
-        enterPassword(password);
-        clickLoginButton();
-    }
 }

@@ -80,11 +80,7 @@ target/cucumber-report.html
 
 Tests will execute in Chrome by default. To run with Edge, Firefox, Safari or Internet Explorer change the browser in:
 ```
-src/test/java/com/epam/automation/steps/LoginSteps.java
-BrowserType.EDGE;
-BrowserType.FIREFOX;
-BrowserType.SAFARI;
-BrowserType.IE;
+src/test/resources/test.properties
 ```
 
 ---
